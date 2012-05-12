@@ -16,7 +16,7 @@ module SessionsHelper
     user == current_user
   end
 
-def sign_out
+  def sign_out
     current_user = nil
     cookies.delete(:remember_token)
   end
@@ -39,7 +39,18 @@ def sign_out
     session[:return_to] = request.fullpath
   end
 
-   private
+  def current_user?(user)
+    user == current_user
+  end
+
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_path, notice: "Please sign in."
+    end
+  end
+
+  private
 
     def user_from_remember_token
       remember_token = cookies[:remember_token]

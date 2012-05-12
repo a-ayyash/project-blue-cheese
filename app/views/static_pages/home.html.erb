@@ -1,3 +1,15 @@
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+      	<%= render 'shared/stats' %>
+      </section>
+    </aside>
+  </div>  
+<% else %>
 <div class="center hero-unit">
   <h1>Mesh 8 Tracks</h1>
 
@@ -11,3 +23,4 @@
 </div>
 
 <%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<% end %> 

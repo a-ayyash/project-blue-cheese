@@ -1,6 +1,19 @@
 Mesh8tracks::Application.routes.draw do
+  get "relationships/create"
+
+  get "relationships/destroy"
+
+  get "relationship/create"
+
+  get "relationship/destroy"
+
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :relationships, only: [:create, :destroy]
   get "users/new"
   
   match '/signup', to: 'users#new'
