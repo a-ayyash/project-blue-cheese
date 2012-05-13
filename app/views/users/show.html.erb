@@ -11,6 +11,15 @@
     </section>
   </aside>
     <div class="span8">
+    <% if @user.userlists.any? %>
+      <h3>Lists (<%= @user.userlists.count %>)</h3>
+      <ol class="userlists">
+        <%= render @userlists %>
+      </ol>
+      <%= will_paginate @userlists %>
+    <% end %>
+  </div>
+    <div class="span8">
     <%= render 'follow_form' if signed_in? %>    
   </div>
 </div>
