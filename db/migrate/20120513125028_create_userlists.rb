@@ -8,5 +8,6 @@ class CreateUserlists < ActiveRecord::Migration
     end
   end
 
-  add_index :userlists, [:user_id, :created_at]
+  add_index :userlists, :user_id
+  add_index :userlists, :created_at
 end
